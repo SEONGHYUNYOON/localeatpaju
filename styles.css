@@ -34,10 +34,18 @@ body {
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #2d5016;
-    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-image,
+.header-logo {
+    height: 50px;
+    width: auto;
+    max-width: 250px;
+    max-height: 40px;
+    object-fit: contain;
 }
 
 .header-buttons {
@@ -338,6 +346,11 @@ body {
         gap: 15px;
     }
 
+    .logo-image {
+        height: 40px;
+        max-width: 200px;
+    }
+
     .nav-menu {
         flex-direction: column;
         gap: 15px;
@@ -372,6 +385,11 @@ body {
 }
 
 @media (max-width: 480px) {
+    .logo-image {
+        height: 35px;
+        max-width: 180px;
+    }
+
     .hero {
         height: 400px;
     }
