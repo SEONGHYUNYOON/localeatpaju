@@ -95,17 +95,107 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const viewParam = urlParams.get('view');
     
-    if (viewParam === 'desktop') {
+    function applyDesktopView() {
         document.body.classList.add('desktop-view');
+        const navigation = document.querySelector('.navigation');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (navigation) {
+            navigation.style.display = 'flex';
+            navigation.style.position = 'static';
+            navigation.style.width = 'auto';
+            navigation.style.backgroundColor = '#f8f9fa';
+            navigation.style.boxShadow = 'none';
+            navigation.classList.remove('active'); // active 클래스 제거
+        }
+        
+        if (navMenu) {
+            navMenu.style.flexDirection = 'row';
+            navMenu.style.gap = '12px';
+            navMenu.style.padding = '15px 0';
+            navMenu.style.justifyContent = 'center';
+            navMenu.style.flexWrap = 'wrap';
+            
+            // 모든 li 요소 스타일 강제 적용
+            const navItems = navMenu.querySelectorAll('li');
+            navItems.forEach(li => {
+                li.style.width = 'auto';
+                li.style.padding = '0';
+            });
+            
+            // 모든 a 요소 스타일 강제 적용
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.style.display = 'inline-block';
+                link.style.padding = '5px 6px';
+                link.style.borderBottom = 'none';
+                link.style.width = 'auto';
+                link.style.fontSize = '12px';
+                link.style.whiteSpace = 'nowrap';
+            });
+        }
+        
+        // 햄버거 메뉴 숨기기
+        const hamburger = document.querySelector('.hamburger-menu');
+        if (hamburger) {
+            hamburger.style.display = 'none';
+        }
+    }
+    
+    function removeDesktopView() {
+        document.body.classList.remove('desktop-view');
+        const navigation = document.querySelector('.navigation');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (navigation) {
+            navigation.style.display = '';
+            navigation.style.position = '';
+            navigation.style.width = '';
+            navigation.style.backgroundColor = '';
+            navigation.style.boxShadow = '';
+        }
+        
+        if (navMenu) {
+            navMenu.style.flexDirection = '';
+            navMenu.style.gap = '';
+            navMenu.style.padding = '';
+            navMenu.style.justifyContent = '';
+            navMenu.style.flexWrap = '';
+            
+            const navItems = navMenu.querySelectorAll('li');
+            navItems.forEach(li => {
+                li.style.width = '';
+                li.style.padding = '';
+            });
+            
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.style.display = '';
+                link.style.padding = '';
+                link.style.borderBottom = '';
+                link.style.width = '';
+                link.style.fontSize = '';
+                link.style.whiteSpace = '';
+            });
+        }
+        
+        const hamburger = document.querySelector('.hamburger-menu');
+        if (hamburger) {
+            hamburger.style.display = '';
+        }
+    }
+    
+    if (viewParam === 'desktop') {
+        applyDesktopView();
         localStorage.setItem('preferredView', 'desktop');
     } else if (viewParam === 'mobile') {
-        document.body.classList.remove('desktop-view');
+        removeDesktopView();
         localStorage.setItem('preferredView', 'mobile');
     } else {
         // 저장된 선호도 불러오기
         const preferredView = localStorage.getItem('preferredView');
         if (preferredView === 'desktop') {
-            document.body.classList.add('desktop-view');
+            applyDesktopView();
         }
     }
 
