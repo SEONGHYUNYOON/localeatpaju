@@ -222,6 +222,13 @@ body {
     .nav-weather {
         display: none; /* 모바일에서는 숨김 */
     }
+
+    /* PC 버전 선택 시 날씨 위젯 표시 */
+    body.desktop-view .nav-weather {
+        display: block !important;
+        font-size: 0.85em !important;
+        margin-left: 15px !important;
+    }
 }
 
 /* Hero Section */
@@ -554,8 +561,15 @@ body.desktop-view .navigation {
 
 body.desktop-view .nav-menu {
     flex-direction: row !important;
-    gap: 40px !important;
+    gap: 15px !important;
     padding: 15px 0 !important;
+    flex-wrap: wrap !important;
+}
+
+body.desktop-view .nav-menu li a {
+    font-size: 13px !important;
+    padding: 5px 8px !important;
+    white-space: nowrap !important;
 }
 
 body.desktop-view .hamburger-menu {
@@ -597,9 +611,16 @@ body.desktop-view .hamburger-menu {
     /* PC 버전 선택 시 네비게이션 메뉴는 가로로 유지 */
     body.desktop-view .nav-menu {
         flex-direction: row !important;
-        gap: 30px !important;
+        gap: 10px !important;
         padding: 15px 0 !important;
         justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+
+    body.desktop-view .nav-menu li a {
+        font-size: 12px !important;
+        padding: 5px 6px !important;
+        white-space: nowrap !important;
     }
 
     .hero-title {

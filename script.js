@@ -128,5 +128,105 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = newUrl;
         });
     }
+
+    // 실제 날씨 정보 가져오기 (OpenWeatherMap API)
+    async function fetchWeather() {
+        const weatherElement = document.querySelector('.nav-weather');
+        if (!weatherElement) return;
+
+        // 파주시 좌표 (경기도 파주시)
+        const lat = 37.7599;
+        const lon = 126.7778;
+        
+        // OpenWeatherMap API 키 (무료 API 사용)
+        // 실제 운영 시에는 환경 변수나 서버 사이드에서 처리하는 것이 좋습니다
+        const apiKey = 'YOUR_API_KEY_HERE'; // 사용자가 OpenWeatherMap에서 발급받은 API 키로 교체 필요
+        
+        try {
+            // API 키가 없으면 가상 데이터 사용
+            if (apiKey === 'YOUR_API_KEY_HERE') {
+                // 가상 데이터 (실제 API 연동 전까지 사용)
+                const currentDate = new Date();
+                const hour = currentDate.getHours();
+                let temp = 15;
+                let weatherIcon = '☀️';
+                let airQuality = '좋음';
+                
+                // 시간대별 온도 조정 (가상)
+                if (hour >= 6 && hour < 12) {
+                    temp = 12 + Math.floor(Math.random() * 5); // 오전: 12-17도
+                    weatherIcon = '☀️';
+                } else if (hour >= 12 && hour < 18) {
+                    temp = 18 + Math.floor(Math.random() * 7); // 오후: 18-25도
+                    weatherIcon = '☀️';
+                } else if (hour >= 18 && hour < 22) {
+                    temp = 15 + Math.floor(Math.random() * 5); // 저녁: 15-20도
+                    weatherIcon = '🌙';
+                } else {
+                    temp = 8 + Math.floor(Math.random() * 5); // 밤: 8-13도
+                    weatherIcon = '🌙';
+                }
+                
+                weatherElement.innerHTML = `${weatherIcon} 파주: ${temp}°C (미세먼지: ${airQuality})`;
+                return;
+            }
+
+            // 실제 API 호출 (API 키가 있을 때)
+            const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=kr`;
+            const airQualityUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+            
+            const [weatherResponse, airQualityResponse] = await Promise.all([
+                fetch(weatherUrl),
+                fetch(airQualityUrl)
+            ]);
+            
+            if (weatherResponse.ok && airQualityResponse.ok) {
+                const weatherData = await weatherResponse.json();
+                const airQualityData = await airQualityResponse.json();
+                
+                const temp = Math.round(weatherData.main.temp);
+                const weatherMain = weatherData.weather[0].main;
+                const aqi = airQualityData.list[0].main.aqi;
+                
+                // 날씨 아이콘 매핑
+                const weatherIcons = {
+                    'Clear': '☀️',
+                    'Clouds': '☁️',
+                    'Rain': '🌧️',
+                    'Drizzle': '🌦️',
+                    'Thunderstorm': '⛈️',
+                    'Snow': '❄️',
+                    'Mist': '🌫️',
+                    'Fog': '🌫️'
+                };
+                const weatherIcon = weatherIcons[weatherMain] || '☀️';
+                
+                // 미세먼지 등급 매핑 (AQI: 1=좋음, 2=보통, 3=나쁨, 4=매우나쁨, 5=위험)
+                const airQualityLevels = {
+                    1: '좋음',
+                    2: '보통',
+                    3: '나쁨',
+                    4: '매우나쁨',
+                    5: '위험'
+                };
+                const airQuality = airQualityLevels[aqi] || '보통';
+                
+                weatherElement.innerHTML = `${weatherIcon} 파주: ${temp}°C (미세먼지: ${airQuality})`;
+            } else {
+                // API 호출 실패 시 가상 데이터 사용
+                weatherElement.innerHTML = '☀️ 파주: 15°C (미세먼지: 좋음)';
+            }
+        } catch (error) {
+            console.error('날씨 정보를 가져오는 중 오류 발생:', error);
+            // 오류 발생 시 가상 데이터 사용
+            weatherElement.innerHTML = '☀️ 파주: 15°C (미세먼지: 좋음)';
+        }
+    }
+
+    // 페이지 로드 시 날씨 정보 가져오기
+    fetchWeather();
+    
+    // 10분마다 날씨 정보 업데이트
+    setInterval(fetchWeather, 600000); // 10분 = 600000ms
 });
 
