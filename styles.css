@@ -248,7 +248,9 @@ body {
 
 @media (max-width: 992px) {
     .nav-weather {
-        display: none; /* 모바일에서는 숨김 */
+        display: block; /* 모바일에서도 표시 */
+        font-size: 0.8em;
+        margin-left: 10px;
     }
 
     /* PC 버전 선택 시 날씨 위젯 표시 */
@@ -256,6 +258,13 @@ body {
         display: block !important;
         font-size: 0.85em !important;
         margin-left: 15px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-weather {
+        font-size: 0.75em;
+        margin-left: 8px;
     }
 }
 

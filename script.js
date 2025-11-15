@@ -148,14 +148,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const navMenu = document.querySelector('.nav-menu');
         
         if (navigation) {
-            navigation.style.display = '';
+            // 모바일에서는 기본적으로 숨김
+            navigation.style.display = 'none';
             navigation.style.position = '';
             navigation.style.width = '';
             navigation.style.backgroundColor = '';
             navigation.style.boxShadow = '';
+            navigation.classList.remove('active'); // active 클래스 제거
         }
         
         if (navMenu) {
+            // 인라인 스타일 제거하여 CSS 기본값 사용
             navMenu.style.flexDirection = '';
             navMenu.style.gap = '';
             navMenu.style.padding = '';
@@ -181,7 +184,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const hamburger = document.querySelector('.hamburger-menu');
         if (hamburger) {
-            hamburger.style.display = '';
+            // 모바일에서는 햄버거 메뉴 표시
+            if (window.innerWidth <= 992) {
+                hamburger.style.display = 'flex';
+            } else {
+                hamburger.style.display = '';
+            }
         }
     }
     
