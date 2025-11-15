@@ -4275,3 +4275,77 @@ body {
     }
 }
 
+/* Experience Section Styles */
+.experiences-list-section {
+    padding: 60px 0;
+}
+
+.experience-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(45, 80, 22, 0.15);
+}
+
+.experience-host {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.host-label {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.host-link {
+    color: #2d5016;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.host-link:hover {
+    color: #1a3009;
+    text-decoration: underline;
+}
+
+.farmer-experience-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.experience-benefit {
+    background-color: #fff9e6;
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.benefit-text {
+    margin: 0;
+    color: #856404;
+    font-size: 14px;
+}
+
+.experience-options {
+    margin: 20px 0;
+}
+
+.experience-options .form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Responsive Styles for Experience Section */
+@media (max-width: 768px) {
+    .farmer-experience-section {
+        padding: 40px 0;
+    }
+}
+
