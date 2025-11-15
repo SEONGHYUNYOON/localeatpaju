@@ -4280,6 +4280,27 @@ body {
     padding: 60px 0;
 }
 
+.experiences-list-section .products-grid,
+.campsites-list-section .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+@media (max-width: 992px) {
+    .experiences-list-section .products-grid,
+    .campsites-list-section .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .experiences-list-section .products-grid,
+    .campsites-list-section .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .experience-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
