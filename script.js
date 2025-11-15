@@ -222,6 +222,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const preferredView = localStorage.getItem('preferredView');
         if (preferredView === 'desktop') {
             applyDesktopView();
+        } else {
+            // 모바일 버전이면 네비게이션 숨기기
+            if (window.innerWidth <= 992 && navigation) {
+                navigation.style.display = 'none';
+                navigation.classList.remove('active');
+            }
+        }
+    }
+    
+    // 초기 로드 시 모바일이면 네비게이션 숨기기
+    if (window.innerWidth <= 992 && !document.body.classList.contains('desktop-view')) {
+        if (navigation) {
+            navigation.style.display = 'none';
+            navigation.classList.remove('active');
         }
     }
 
