@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 | 로컬잇파주</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <a href="index.html" class="logo">LOCAEATPAJU</a>
+            <div class="header-buttons">
+                <a href="login.html" class="btn-login">로그인</a>
+                <a href="signup.html" class="btn-signup">회원가입</a>
+            </div>
+        </div>
+        <nav class="navigation">
+            <ul class="nav-menu">
+                <li><a href="about.html">소개</a></li>
+                <li><a href="farmers.html">농부 이야기</a></li>
+                <li><a href="products.html">지금 만나는 작물</a></li>
+                <li><a href="community.html">커뮤니티</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Signup Page Section -->
+    <section class="auth-page-section">
+        <div class="container">
+            <div class="auth-container">
+                <h1 class="auth-page-title">회원가입</h1>
+                
+                <form class="auth-form" id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-email" class="form-label">이메일</label>
+                        <div class="input-with-button">
+                            <input type="email" id="signup-email" name="email" class="form-input" placeholder="이메일을 입력하세요" required>
+                            <button type="button" class="btn-check-duplicate" onclick="checkEmailDuplicate()">중복 확인</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password" class="form-label">비밀번호</label>
+                        <input type="password" id="signup-password" name="password" class="form-input" placeholder="비밀번호를 입력하세요" required>
+                        <p class="form-help-text">8자 이상, 영문/숫자 조합</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password-confirm" class="form-label">비밀번호 확인</label>
+                        <input type="password" id="signup-password-confirm" name="password-confirm" class="form-input" placeholder="비밀번호를 다시 입력하세요" required>
+                        <p class="form-help-text password-match-text" id="password-match-text"></p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-name" class="form-label">이름</label>
+                        <input type="text" id="signup-name" name="name" class="form-input" placeholder="이름을 입력하세요" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="terms-section">
+                            <label class="terms-checkbox-label">
+                                <input type="checkbox" id="terms-required-1" name="terms-required-1" class="terms-checkbox" required>
+                                <span class="terms-text">
+                                    [필수] 이용약관 동의 
+                                    <a href="#terms" class="terms-link">(자세히 보기)</a>
+                                </span>
+                            </label>
+                            
+                            <label class="terms-checkbox-label">
+                                <input type="checkbox" id="terms-required-2" name="terms-required-2" class="terms-checkbox" required>
+                                <span class="terms-text">
+                                    [필수] 개인정보 수집 및 이용 동의 
+                                    <a href="#privacy" class="terms-link">(자세히 보기)</a>
+                                </span>
+                            </label>
+                            
+                            <label class="terms-checkbox-label">
+                                <input type="checkbox" id="terms-optional" name="terms-optional" class="terms-checkbox">
+                                <span class="terms-text">
+                                    [선택] 마케팅 정보 수신 동의 (이메일/SMS)
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-auth-primary">가입하기</button>
+                    
+                    <div class="auth-signup-link">
+                        <span>이미 회원이신가요? </span>
+                        <a href="login.html" class="signup-link">로그인</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#terms">이용약관</a>
+                    <a href="#privacy">개인정보처리방침</a>
+                    <a href="#support">고객센터</a>
+                </div>
+                <div class="footer-info">
+                    <p>로컬잇파주 (LOCAEATPAJU)</p>
+                    <p>주소: 경기도 파주시 농부로 123</p>
+                    <p>이메일: contact@locaeatpaju.kr</p>
+                    <p>전화: 031-123-4567</p>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 로컬잇파주. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
+
