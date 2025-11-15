@@ -5276,8 +5276,10 @@ body {
         padding: 60px 0;
     }
 
+    /* 모바일에서도 2열 그리드 유지 (PC와 가까운 레이아웃) */
     .farewell-spots-section .products-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 
     .farewell-theme-title {
@@ -5298,8 +5300,8 @@ body {
 .farewell-hero {
     position: relative;
     width: 100%;
-    height: 450px;
-    max-height: 50vh;
+    height: 300px;
+    max-height: 35vh;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -5458,16 +5460,16 @@ body {
 /* Responsive Styles for Farewell Page */
 @media (max-width: 992px) {
     .farewell-hero {
-        height: 60vh;
-        min-height: 400px;
+        height: 250px;
+        max-height: 30vh;
     }
 
     .farewell-hero-title {
-        font-size: 42px;
+        font-size: 36px;
     }
 
     .farewell-hero-subtitle {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .farewell-zigzag-grid {
@@ -5499,17 +5501,23 @@ body {
 
 @media (max-width: 768px) {
     .farewell-hero {
-        height: 50vh;
-        min-height: 350px;
+        height: 200px;
+        max-height: 25vh;
     }
 
     .farewell-hero-title {
-        font-size: 32px;
-        margin-bottom: 15px;
+        font-size: 28px;
+        margin-bottom: 10px;
     }
 
     .farewell-hero-subtitle {
-        font-size: 16px;
+        font-size: 14px;
+    }
+
+    /* 모바일에서도 그리드 레이아웃 유지 (PC와 가까운 레이아웃) */
+    .farewell-spots-section .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 
     .farewell-zigzag-section {
