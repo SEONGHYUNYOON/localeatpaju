@@ -4740,3 +4740,138 @@ body {
     }
 }
 
+/* Farmer Log Page Styles - Instagram/Facebook Feed Layout */
+.farmer-log-section {
+    padding: 60px 0;
+    background-color: #f5f5f5;
+}
+
+.farmer-log-feed {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.farmer-log-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.farmer-log-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.log-card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.log-farmer-profile {
+    display: flex;
+    align-items: center;
+}
+
+.log-farmer-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
+}
+
+.log-farmer-link:hover {
+    opacity: 0.8;
+}
+
+.log-farmer-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0;
+}
+
+.log-farmer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.log-farmer-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a3009;
+    margin: 0;
+}
+
+.log-time {
+    font-size: 13px;
+    color: #999;
+}
+
+.log-card-body {
+    padding: 0;
+}
+
+.log-content {
+    padding: 16px 20px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #333;
+    margin: 0;
+}
+
+.log-image {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.log-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Responsive Styles for Farmer Log */
+@media (max-width: 768px) {
+    .farmer-log-section {
+        padding: 40px 0;
+    }
+
+    .farmer-log-feed {
+        max-width: 100%;
+        padding: 0 15px;
+        gap: 20px;
+    }
+
+    .log-card-header {
+        padding: 14px 16px;
+    }
+
+    .log-farmer-avatar {
+        width: 45px;
+        height: 45px;
+    }
+
+    .log-farmer-name {
+        font-size: 15px;
+    }
+
+    .log-time {
+        font-size: 12px;
+    }
+
+    .log-content {
+        padding: 14px 16px;
+        font-size: 14px;
+    }
+}
+
